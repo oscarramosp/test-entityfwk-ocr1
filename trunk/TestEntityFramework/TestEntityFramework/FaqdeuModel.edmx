@@ -4,11 +4,349 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Namespace="Faqdeu.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="FaqdeuTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="Faqdeu.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FaqdeuStoreContainer">
+    <EntitySet Name="Perfiles" EntityType="Faqdeu.Store.Perfiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="Faqdeu.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Entidades" EntityType="Faqdeu.Store.Entidades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profesores" EntityType="Faqdeu.Store.Profesores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Carreras" EntityType="Faqdeu.Store.Carreras" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarrerasxEntidades" EntityType="Faqdeu.Store.CarrerasxEntidades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProfesoresxCarreraesxEntidades" EntityType="Faqdeu.Store.ProfesoresxCarreraesxEntidades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Formularios" EntityType="Faqdeu.Store.Formularios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Preguntas" EntityType="Faqdeu.Store.Preguntas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Evaluaciones" EntityType="Faqdeu.Store.Evaluaciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Respuestas" EntityType="Faqdeu.Store.Respuestas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PerfilUsuario" EntityType="Faqdeu.Store.PerfilUsuario" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_PerfilUsuario_Perfil" Association="Faqdeu.Store.FK_PerfilUsuario_Perfil">
+      <End Role="Perfil" EntitySet="Perfiles" />
+      <End Role="PerfilUsuario" EntitySet="PerfilUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerfilUsuario_Usuario" Association="Faqdeu.Store.FK_PerfilUsuario_Usuario">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="PerfilUsuario" EntitySet="PerfilUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="CarreraCarrerasxEntidad" Association="Faqdeu.Store.CarreraCarrerasxEntidad">
+      <End Role="Carrera" EntitySet="Carreras" />
+      <End Role="CarrerasxEntidad" EntitySet="CarrerasxEntidades" />
+    </AssociationSet>
+    <AssociationSet Name="EntidadCarrerasxEntidad" Association="Faqdeu.Store.EntidadCarrerasxEntidad">
+      <End Role="Entidad" EntitySet="Entidades" />
+      <End Role="CarrerasxEntidad" EntitySet="CarrerasxEntidades" />
+    </AssociationSet>
+    <AssociationSet Name="CarrerasxEntidadProfesoresxCarreraxEntidad" Association="Faqdeu.Store.CarrerasxEntidadProfesoresxCarreraxEntidad">
+      <End Role="CarrerasxEntidad" EntitySet="CarrerasxEntidades" />
+      <End Role="ProfesoresxCarreraxEntidad" EntitySet="ProfesoresxCarreraesxEntidades" />
+    </AssociationSet>
+    <AssociationSet Name="ProfesorProfesoresxCarreraxEntidad" Association="Faqdeu.Store.ProfesorProfesoresxCarreraxEntidad">
+      <End Role="Profesor" EntitySet="Profesores" />
+      <End Role="ProfesoresxCarreraxEntidad" EntitySet="ProfesoresxCarreraesxEntidades" />
+    </AssociationSet>
+    <AssociationSet Name="FormularioPregunta" Association="Faqdeu.Store.FormularioPregunta">
+      <End Role="Formulario" EntitySet="Formularios" />
+      <End Role="Pregunta" EntitySet="Preguntas" />
+    </AssociationSet>
+    <AssociationSet Name="EvaluacionRespuesta" Association="Faqdeu.Store.EvaluacionRespuesta">
+      <End Role="Evaluacion" EntitySet="Evaluaciones" />
+      <End Role="Respuesta" EntitySet="Respuestas" />
+    </AssociationSet>
+    <AssociationSet Name="FormularioEvaluacion" Association="Faqdeu.Store.FormularioEvaluacion">
+      <End Role="Formulario" EntitySet="Formularios" />
+      <End Role="Evaluacion" EntitySet="Evaluaciones" />
+    </AssociationSet>
+    <AssociationSet Name="PreguntaRespuesta" Association="Faqdeu.Store.PreguntaRespuesta">
+      <End Role="Pregunta" EntitySet="Preguntas" />
+      <End Role="Respuesta" EntitySet="Respuestas" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioEvaluacion" Association="Faqdeu.Store.UsuarioEvaluacion">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Evaluacion" EntitySet="Evaluaciones" />
+    </AssociationSet>
+    <AssociationSet Name="ProfesoresxCarreraxEntidadEvaluacion" Association="Faqdeu.Store.ProfesoresxCarreraxEntidadEvaluacion">
+      <End Role="ProfesoresxCarreraxEntidad" EntitySet="ProfesoresxCarreraesxEntidades" />
+      <End Role="Evaluacion" EntitySet="Evaluaciones" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Perfiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="ApellidoPaterno" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="ApellidoMaterno" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="Clave" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaUltimoAcceso" Type="datetime" Nullable="true" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Entidades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="1" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profesores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Carreras">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarrerasxEntidades">
+    <Key>
+      <PropertyRef Name="CarreraId" />
+      <PropertyRef Name="EntidadId" />
+    </Key>
+    <Property Name="CarreraId" Type="int" Nullable="false" />
+    <Property Name="EntidadId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfesoresxCarreraesxEntidades">
+    <Key>
+      <PropertyRef Name="CarrerasxEntidadCarreraId" />
+      <PropertyRef Name="CarrerasxEntidadEntidadId" />
+      <PropertyRef Name="ProfesorId" />
+    </Key>
+    <Property Name="CarrerasxEntidadCarreraId" Type="int" Nullable="false" />
+    <Property Name="CarrerasxEntidadEntidadId" Type="int" Nullable="false" />
+    <Property Name="ProfesorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Formularios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Versión" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Preguntas">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="FormularioId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FormularioId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evaluaciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="FechaCreacion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaModificacion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tags" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FormularioId" Type="int" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId" Type="int" Nullable="false" />
+    <Property Name="ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId" Type="int" Nullable="false" />
+    <Property Name="ProfesoresxCarreraxEntidadProfesorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Respuestas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EvaluacionId" Type="int" Nullable="false" />
+    <Property Name="PreguntaId" Type="int" Nullable="false" />
+    <Property Name="PreguntaFormularioId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PerfilUsuario">
+    <Key>
+      <PropertyRef Name="Perfiles_Id" />
+      <PropertyRef Name="Usuarios_Id" />
+    </Key>
+    <Property Name="Perfiles_Id" Type="int" Nullable="false" />
+    <Property Name="Usuarios_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CarreraCarrerasxEntidad">
+    <End Role="Carrera" Type="Faqdeu.Store.Carreras" Multiplicity="1" />
+    <End Role="CarrerasxEntidad" Type="Faqdeu.Store.CarrerasxEntidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carrera">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CarrerasxEntidad">
+        <PropertyRef Name="CarreraId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EntidadCarrerasxEntidad">
+    <End Role="Entidad" Type="Faqdeu.Store.Entidades" Multiplicity="1" />
+    <End Role="CarrerasxEntidad" Type="Faqdeu.Store.CarrerasxEntidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entidad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CarrerasxEntidad">
+        <PropertyRef Name="EntidadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CarrerasxEntidadProfesoresxCarreraxEntidad">
+    <End Role="CarrerasxEntidad" Type="Faqdeu.Store.CarrerasxEntidades" Multiplicity="1" />
+    <End Role="ProfesoresxCarreraxEntidad" Type="Faqdeu.Store.ProfesoresxCarreraesxEntidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarrerasxEntidad">
+        <PropertyRef Name="CarreraId" />
+        <PropertyRef Name="EntidadId" />
+      </Principal>
+      <Dependent Role="ProfesoresxCarreraxEntidad">
+        <PropertyRef Name="CarrerasxEntidadCarreraId" />
+        <PropertyRef Name="CarrerasxEntidadEntidadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfesorProfesoresxCarreraxEntidad">
+    <End Role="Profesor" Type="Faqdeu.Store.Profesores" Multiplicity="1" />
+    <End Role="ProfesoresxCarreraxEntidad" Type="Faqdeu.Store.ProfesoresxCarreraesxEntidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProfesoresxCarreraxEntidad">
+        <PropertyRef Name="ProfesorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormularioPregunta">
+    <End Role="Formulario" Type="Faqdeu.Store.Formularios" Multiplicity="1" />
+    <End Role="Pregunta" Type="Faqdeu.Store.Preguntas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formulario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pregunta">
+        <PropertyRef Name="FormularioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EvaluacionRespuesta">
+    <End Role="Evaluacion" Type="Faqdeu.Store.Evaluaciones" Multiplicity="1" />
+    <End Role="Respuesta" Type="Faqdeu.Store.Respuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Evaluacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Respuesta">
+        <PropertyRef Name="EvaluacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormularioEvaluacion">
+    <End Role="Formulario" Type="Faqdeu.Store.Formularios" Multiplicity="1" />
+    <End Role="Evaluacion" Type="Faqdeu.Store.Evaluaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formulario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evaluacion">
+        <PropertyRef Name="FormularioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PreguntaRespuesta">
+    <End Role="Pregunta" Type="Faqdeu.Store.Preguntas" Multiplicity="1" />
+    <End Role="Respuesta" Type="Faqdeu.Store.Respuestas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregunta">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="FormularioId" />
+      </Principal>
+      <Dependent Role="Respuesta">
+        <PropertyRef Name="PreguntaId" />
+        <PropertyRef Name="PreguntaFormularioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsuarioEvaluacion">
+    <End Role="Usuario" Type="Faqdeu.Store.Usuarios" Multiplicity="1" />
+    <End Role="Evaluacion" Type="Faqdeu.Store.Evaluaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evaluacion">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfesoresxCarreraxEntidadEvaluacion">
+    <End Role="ProfesoresxCarreraxEntidad" Type="Faqdeu.Store.ProfesoresxCarreraesxEntidades" Multiplicity="1" />
+    <End Role="Evaluacion" Type="Faqdeu.Store.Evaluaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfesoresxCarreraxEntidad">
+        <PropertyRef Name="CarrerasxEntidadCarreraId" />
+        <PropertyRef Name="CarrerasxEntidadEntidadId" />
+        <PropertyRef Name="ProfesorId" />
+      </Principal>
+      <Dependent Role="Evaluacion">
+        <PropertyRef Name="ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId" />
+        <PropertyRef Name="ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId" />
+        <PropertyRef Name="ProfesoresxCarreraxEntidadProfesorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerfilUsuario_Perfil">
+    <End Role="Perfil" Type="Faqdeu.Store.Perfiles" Multiplicity="1" />
+    <End Role="PerfilUsuario" Type="Faqdeu.Store.PerfilUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PerfilUsuario">
+        <PropertyRef Name="Perfiles_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerfilUsuario_Usuario">
+    <End Role="PerfilUsuario" Type="Faqdeu.Store.PerfilUsuario" Multiplicity="*" />
+    <End Role="Usuario" Type="Faqdeu.Store.Usuarios" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PerfilUsuario">
+        <PropertyRef Name="Usuarios_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Faqdeu" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -41,6 +379,33 @@
             <End Role="ProfesoresxCarreraxEntidad" EntitySet="ProfesoresxCarreraesxEntidades" />
           </AssociationSet>
           <EntitySet Name="Formularios" EntityType="Faqdeu.Formulario" />
+          <EntitySet Name="Preguntas" EntityType="Faqdeu.Pregunta" />
+          <AssociationSet Name="FormularioPregunta" Association="Faqdeu.FormularioPregunta">
+            <End Role="Formulario" EntitySet="Formularios" />
+            <End Role="Pregunta" EntitySet="Preguntas" />
+          </AssociationSet>
+          <EntitySet Name="Evaluaciones" EntityType="Faqdeu.Evaluacion" />
+          <EntitySet Name="Respuestas" EntityType="Faqdeu.Respuesta" />
+          <AssociationSet Name="EvaluacionRespuesta" Association="Faqdeu.EvaluacionRespuesta">
+            <End Role="Evaluacion" EntitySet="Evaluaciones" />
+            <End Role="Respuesta" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FormularioEvaluacion" Association="Faqdeu.FormularioEvaluacion">
+            <End Role="Formulario" EntitySet="Formularios" />
+            <End Role="Evaluacion" EntitySet="Evaluaciones" />
+          </AssociationSet>
+          <AssociationSet Name="PreguntaRespuesta" Association="Faqdeu.PreguntaRespuesta">
+            <End Role="Pregunta" EntitySet="Preguntas" />
+            <End Role="Respuesta" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="UsuarioEvaluacion" Association="Faqdeu.UsuarioEvaluacion">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Evaluacion" EntitySet="Evaluaciones" />
+          </AssociationSet>
+          <AssociationSet Name="ProfesoresxCarreraxEntidadEvaluacion" Association="Faqdeu.ProfesoresxCarreraxEntidadEvaluacion">
+            <End Role="ProfesoresxCarreraxEntidad" EntitySet="ProfesoresxCarreraesxEntidades" />
+            <End Role="Evaluacion" EntitySet="Evaluaciones" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Perfil">
           <Key>
@@ -69,6 +434,7 @@
           <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
           <NavigationProperty Name="Perfiles" Relationship="Faqdeu.PerfilUsuario" FromRole="Usuario" ToRole="Perfil" />
           <Property Type="String" Name="Estado" Nullable="false" />
+          <NavigationProperty Name="Evaluaciones" Relationship="Faqdeu.UsuarioEvaluacion" FromRole="Usuario" ToRole="Evaluacion" />
         </EntityType>
         <EntityType Name="Entidad">
           <Key>
@@ -88,8 +454,8 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Nombre" Nullable="false" />
-          <Property Type="String" Name="FechaCreacion" Nullable="false" />
-          <Property Type="String" Name="FechaModificacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="false" />
           <Property Type="String" Name="Estado" Nullable="false" />
           <NavigationProperty Name="Carreras" Relationship="Faqdeu.ProfesorProfesoresxCarreraxEntidad" FromRole="Profesor" ToRole="ProfesoresxCarreraxEntidad" />
         </EntityType>
@@ -154,6 +520,7 @@
           <Property Type="Int32" Name="CarrerasxEntidadEntidadId" Nullable="false" />
           <NavigationProperty Name="Profesores" Relationship="Faqdeu.ProfesorProfesoresxCarreraxEntidad" FromRole="ProfesoresxCarreraxEntidad" ToRole="Profesor" />
           <Property Type="Int32" Name="ProfesorId" Nullable="false" />
+          <NavigationProperty Name="Evaluacion" Relationship="Faqdeu.ProfesoresxCarreraxEntidadEvaluacion" FromRole="ProfesoresxCarreraxEntidad" ToRole="Evaluacion" />
         </EntityType>
         <Association Name="CarrerasxEntidadProfesoresxCarreraxEntidad">
           <End Type="Faqdeu.CarrerasxEntidad" Role="CarrerasxEntidad" Multiplicity="1" />
@@ -188,20 +555,273 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Nombre" Nullable="false" />
           <Property Type="String" Name="Versión" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="false" />
+          <NavigationProperty Name="Preguntas" Relationship="Faqdeu.FormularioPregunta" FromRole="Formulario" ToRole="Pregunta" />
+          <NavigationProperty Name="Evaluaciones" Relationship="Faqdeu.FormularioEvaluacion" FromRole="Formulario" ToRole="Evaluacion" />
+        </EntityType>
+        <EntityType Name="Pregunta">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FormularioId" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" Nullable="false" />
+          <Property Type="String" Name="Tipo" Nullable="false" />
+          <NavigationProperty Name="Formulario" Relationship="Faqdeu.FormularioPregunta" FromRole="Pregunta" ToRole="Formulario" />
+          <Property Type="Int32" Name="FormularioId" Nullable="false" />
+          <NavigationProperty Name="Respuestas" Relationship="Faqdeu.PreguntaRespuesta" FromRole="Pregunta" ToRole="Respuesta" />
+        </EntityType>
+        <Association Name="FormularioPregunta">
+          <End Type="Faqdeu.Formulario" Role="Formulario" Multiplicity="1" />
+          <End Type="Faqdeu.Pregunta" Role="Pregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formulario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pregunta">
+              <PropertyRef Name="FormularioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Evaluacion" >
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
           <Property Type="String" Name="FechaCreacion" Nullable="false" />
           <Property Type="String" Name="FechaModificacion" Nullable="false" />
+          <Property Type="String" Name="Tags" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <NavigationProperty Name="Respuestas" Relationship="Faqdeu.EvaluacionRespuesta" FromRole="Evaluacion" ToRole="Respuesta" />
+          <NavigationProperty Name="Formulario" Relationship="Faqdeu.FormularioEvaluacion" FromRole="Evaluacion" ToRole="Formulario" />
+          <Property Type="Int32" Name="FormularioId" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Faqdeu.UsuarioEvaluacion" FromRole="Evaluacion" ToRole="Usuario" />
+          <Property Type="Int32" Name="UsuarioId" Nullable="false" />
+          <NavigationProperty Name="ProfesoresxCarreraxEntidad" Relationship="Faqdeu.ProfesoresxCarreraxEntidadEvaluacion" FromRole="Evaluacion" ToRole="ProfesoresxCarreraxEntidad" />
+          <Property Type="Int32" Name="ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId" Nullable="false" />
+          <Property Type="Int32" Name="ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId" Nullable="false" />
+          <Property Type="Int32" Name="ProfesoresxCarreraxEntidadProfesorId" Nullable="false" />
         </EntityType>
+        <EntityType Name="Respuesta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Valor" Nullable="false" />
+          <NavigationProperty Name="Evaluacion" Relationship="Faqdeu.EvaluacionRespuesta" FromRole="Respuesta" ToRole="Evaluacion" />
+          <Property Type="Int32" Name="EvaluacionId" Nullable="false" />
+          <NavigationProperty Name="Pregunta" Relationship="Faqdeu.PreguntaRespuesta" FromRole="Respuesta" ToRole="Pregunta" />
+          <Property Type="Int32" Name="PreguntaId" Nullable="false" />
+          <Property Type="Int32" Name="PreguntaFormularioId" Nullable="false" />
+        </EntityType>
+        <Association Name="EvaluacionRespuesta">
+          <End Type="Faqdeu.Evaluacion" Role="Evaluacion" Multiplicity="1" />
+          <End Type="Faqdeu.Respuesta" Role="Respuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Respuesta">
+              <PropertyRef Name="EvaluacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FormularioEvaluacion">
+          <End Type="Faqdeu.Formulario" Role="Formulario" Multiplicity="1" />
+          <End Type="Faqdeu.Evaluacion" Role="Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formulario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="FormularioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PreguntaRespuesta">
+          <End Type="Faqdeu.Pregunta" Role="Pregunta" Multiplicity="1" />
+          <End Type="Faqdeu.Respuesta" Role="Respuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pregunta">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="FormularioId" />
+            </Principal>
+            <Dependent Role="Respuesta">
+              <PropertyRef Name="PreguntaId" />
+              <PropertyRef Name="PreguntaFormularioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsuarioEvaluacion">
+          <End Type="Faqdeu.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="Faqdeu.Evaluacion" Role="Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfesoresxCarreraxEntidadEvaluacion">
+          <End Type="Faqdeu.ProfesoresxCarreraxEntidad" Role="ProfesoresxCarreraxEntidad" Multiplicity="1" />
+          <End Type="Faqdeu.Evaluacion" Role="Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfesoresxCarreraxEntidad">
+              <PropertyRef Name="CarrerasxEntidadCarreraId" />
+              <PropertyRef Name="CarrerasxEntidadEntidadId" />
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId" />
+              <PropertyRef Name="ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId" />
+              <PropertyRef Name="ProfesoresxCarreraxEntidadProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="Faqdeu" />
-        <Alias Key="Target" Value="Faqdeu.Store" />
-        <EntityContainerMapping CdmEntityContainer="FaqdeuContainer" StorageEntityContainer="FaqdeuTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FaqdeuStoreContainer" CdmEntityContainer="FaqdeuContainer">
+    <EntitySetMapping Name="Perfiles">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Perfil)">
+        <MappingFragment StoreEntitySet="Perfiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="FechaUltimoAcceso" ColumnName="FechaUltimoAcceso" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entidades">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Entidad)">
+        <MappingFragment StoreEntitySet="Entidades">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profesores">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Profesor)">
+        <MappingFragment StoreEntitySet="Profesores">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carreras">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Carrera)">
+        <MappingFragment StoreEntitySet="Carreras">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarrerasxEntidades">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.CarrerasxEntidad)">
+        <MappingFragment StoreEntitySet="CarrerasxEntidades">
+          <ScalarProperty Name="CarreraId" ColumnName="CarreraId" />
+          <ScalarProperty Name="EntidadId" ColumnName="EntidadId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfesoresxCarreraesxEntidades">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.ProfesoresxCarreraxEntidad)">
+        <MappingFragment StoreEntitySet="ProfesoresxCarreraesxEntidades">
+          <ScalarProperty Name="CarrerasxEntidadCarreraId" ColumnName="CarrerasxEntidadCarreraId" />
+          <ScalarProperty Name="CarrerasxEntidadEntidadId" ColumnName="CarrerasxEntidadEntidadId" />
+          <ScalarProperty Name="ProfesorId" ColumnName="ProfesorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Formularios">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Formulario)">
+        <MappingFragment StoreEntitySet="Formularios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Versión" ColumnName="Versión" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Preguntas">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Pregunta)">
+        <MappingFragment StoreEntitySet="Preguntas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evaluaciones">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Evaluacion)">
+        <MappingFragment StoreEntitySet="Evaluaciones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId" ColumnName="ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId" />
+          <ScalarProperty Name="ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId" ColumnName="ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId" />
+          <ScalarProperty Name="ProfesoresxCarreraxEntidadProfesorId" ColumnName="ProfesoresxCarreraxEntidadProfesorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Respuestas">
+      <EntityTypeMapping TypeName="IsTypeOf(Faqdeu.Respuesta)">
+        <MappingFragment StoreEntitySet="Respuestas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="EvaluacionId" ColumnName="EvaluacionId" />
+          <ScalarProperty Name="PreguntaId" ColumnName="PreguntaId" />
+          <ScalarProperty Name="PreguntaFormularioId" ColumnName="PreguntaFormularioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PerfilUsuario" TypeName="Faqdeu.PerfilUsuario" StoreEntitySet="PerfilUsuario">
+      <EndProperty Name="Perfil">
+        <ScalarProperty Name="Id" ColumnName="Perfiles_Id" />
+      </EndProperty>
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="Id" ColumnName="Usuarios_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
@@ -247,6 +867,34 @@
           <ConnectorPoint PointX="12" PointY="8.2302864583333335" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Faqdeu.Formulario" Width="1.5" PointX="2.75" PointY="5.5" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="Faqdeu.Pregunta" Width="1.5" PointX="2.75" PointY="8.5" Height="1.5956835937499996" />
+        <AssociationConnector Association="Faqdeu.FormularioPregunta">
+          <ConnectorPoint PointX="3.5" PointY="7.8648893229166656" />
+          <ConnectorPoint PointX="3.5" PointY="8.5" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Faqdeu.Evaluacion" Width="1.5" PointX="6.625" PointY="4.375" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="Faqdeu.Respuesta" Width="1.5" PointX="6.875" PointY="8.625" Height="1.7879850260416657" />
+        <AssociationConnector Association="Faqdeu.EvaluacionRespuesta">
+          <ConnectorPoint PointX="7.5" PointY="7.8936979166666656" />
+          <ConnectorPoint PointX="7.5" PointY="8.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Faqdeu.FormularioEvaluacion">
+          <ConnectorPoint PointX="4.25" PointY="6.6824446614583328" />
+          <ConnectorPoint PointX="6.625" PointY="6.6824446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="Faqdeu.PreguntaRespuesta">
+          <ConnectorPoint PointX="4.25" PointY="9.6487939453125" />
+          <ConnectorPoint PointX="6.875" PointY="9.6487939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Faqdeu.UsuarioEvaluacion" ManuallyRouted="false">
+          <ConnectorPoint PointX="3" PointY="3.4393929036458326" />
+          <ConnectorPoint PointX="7.78125" PointY="3.4393929036458326" />
+          <ConnectorPoint PointX="7.78125" PointY="4.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="Faqdeu.ProfesoresxCarreraxEntidadEvaluacion">
+          <ConnectorPoint PointX="11" PointY="7.0718489583333328" />
+          <ConnectorPoint PointX="8.125" PointY="7.0718489583333328" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

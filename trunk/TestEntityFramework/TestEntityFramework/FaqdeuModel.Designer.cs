@@ -24,6 +24,12 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Faqdeu", "EntidadCarrerasxEntidad", "Entidad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Entidad), "CarrerasxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.CarrerasxEntidad), true)]
 [assembly: EdmRelationshipAttribute("Faqdeu", "CarrerasxEntidadProfesoresxCarreraxEntidad", "CarrerasxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.CarrerasxEntidad), "ProfesoresxCarreraxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), true)]
 [assembly: EdmRelationshipAttribute("Faqdeu", "ProfesorProfesoresxCarreraxEntidad", "Profesor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Profesor), "ProfesoresxCarreraxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "FormularioPregunta", "Formulario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Formulario), "Pregunta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Pregunta), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "EvaluacionRespuesta", "Evaluacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Evaluacion), "Respuesta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Respuesta), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "FormularioEvaluacion", "Formulario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Formulario), "Evaluacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "PreguntaRespuesta", "Pregunta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Pregunta), "Respuesta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Respuesta), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "UsuarioEvaluacion", "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Usuario), "Evaluacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "ProfesoresxCarreraxEntidadEvaluacion", "ProfesoresxCarreraxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), "Evaluacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
 
 #endregion
 
@@ -202,6 +208,54 @@ namespace TestEntityFramework
             }
         }
         private ObjectSet<Formulario> _Formularios;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Pregunta> Preguntas
+        {
+            get
+            {
+                if ((_Preguntas == null))
+                {
+                    _Preguntas = base.CreateObjectSet<Pregunta>("Preguntas");
+                }
+                return _Preguntas;
+            }
+        }
+        private ObjectSet<Pregunta> _Preguntas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Evaluacion> Evaluaciones
+        {
+            get
+            {
+                if ((_Evaluaciones == null))
+                {
+                    _Evaluaciones = base.CreateObjectSet<Evaluacion>("Evaluaciones");
+                }
+                return _Evaluaciones;
+            }
+        }
+        private ObjectSet<Evaluacion> _Evaluaciones;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Respuesta> Respuestas
+        {
+            get
+            {
+                if ((_Respuestas == null))
+                {
+                    _Respuestas = base.CreateObjectSet<Respuesta>("Respuestas");
+                }
+                return _Respuestas;
+            }
+        }
+        private ObjectSet<Respuesta> _Respuestas;
 
         #endregion
 
@@ -269,6 +323,30 @@ namespace TestEntityFramework
         public void AddToFormularios(Formulario formulario)
         {
             base.AddObject("Formularios", formulario);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Preguntas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPreguntas(Pregunta pregunta)
+        {
+            base.AddObject("Preguntas", pregunta);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Evaluaciones EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToEvaluaciones(Evaluacion evaluacion)
+        {
+            base.AddObject("Evaluaciones", evaluacion);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Respuestas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToRespuestas(Respuesta respuesta)
+        {
+            base.AddObject("Respuestas", respuesta);
         }
 
         #endregion
@@ -870,6 +948,411 @@ namespace TestEntityFramework
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Faqdeu", Name="Evaluacion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Evaluacion : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Evaluacion object.
+        /// </summary>
+        /// <param name="fechaCreacion">Initial value of the FechaCreacion property.</param>
+        /// <param name="fechaModificacion">Initial value of the FechaModificacion property.</param>
+        /// <param name="tags">Initial value of the Tags property.</param>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="formularioId">Initial value of the FormularioId property.</param>
+        /// <param name="usuarioId">Initial value of the UsuarioId property.</param>
+        /// <param name="profesoresxCarreraxEntidadCarrerasxEntidadCarreraId">Initial value of the ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId property.</param>
+        /// <param name="profesoresxCarreraxEntidadCarrerasxEntidadEntidadId">Initial value of the ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId property.</param>
+        /// <param name="profesoresxCarreraxEntidadProfesorId">Initial value of the ProfesoresxCarreraxEntidadProfesorId property.</param>
+        public static Evaluacion CreateEvaluacion(global::System.String fechaCreacion, global::System.String fechaModificacion, global::System.String tags, global::System.Int32 id, global::System.Int32 formularioId, global::System.Int32 usuarioId, global::System.Int32 profesoresxCarreraxEntidadCarrerasxEntidadCarreraId, global::System.Int32 profesoresxCarreraxEntidadCarrerasxEntidadEntidadId, global::System.Int32 profesoresxCarreraxEntidadProfesorId)
+        {
+            Evaluacion evaluacion = new Evaluacion();
+            evaluacion.FechaCreacion = fechaCreacion;
+            evaluacion.FechaModificacion = fechaModificacion;
+            evaluacion.Tags = tags;
+            evaluacion.Id = id;
+            evaluacion.FormularioId = formularioId;
+            evaluacion.UsuarioId = usuarioId;
+            evaluacion.ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId = profesoresxCarreraxEntidadCarrerasxEntidadCarreraId;
+            evaluacion.ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId = profesoresxCarreraxEntidadCarrerasxEntidadEntidadId;
+            evaluacion.ProfesoresxCarreraxEntidadProfesorId = profesoresxCarreraxEntidadProfesorId;
+            return evaluacion;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FechaCreacion
+        {
+            get
+            {
+                return _FechaCreacion;
+            }
+            set
+            {
+                OnFechaCreacionChanging(value);
+                ReportPropertyChanging("FechaCreacion");
+                _FechaCreacion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FechaCreacion");
+                OnFechaCreacionChanged();
+            }
+        }
+        private global::System.String _FechaCreacion;
+        partial void OnFechaCreacionChanging(global::System.String value);
+        partial void OnFechaCreacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FechaModificacion
+        {
+            get
+            {
+                return _FechaModificacion;
+            }
+            set
+            {
+                OnFechaModificacionChanging(value);
+                ReportPropertyChanging("FechaModificacion");
+                _FechaModificacion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FechaModificacion");
+                OnFechaModificacionChanged();
+            }
+        }
+        private global::System.String _FechaModificacion;
+        partial void OnFechaModificacionChanging(global::System.String value);
+        partial void OnFechaModificacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Tags
+        {
+            get
+            {
+                return _Tags;
+            }
+            set
+            {
+                OnTagsChanging(value);
+                ReportPropertyChanging("Tags");
+                _Tags = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Tags");
+                OnTagsChanged();
+            }
+        }
+        private global::System.String _Tags;
+        partial void OnTagsChanging(global::System.String value);
+        partial void OnTagsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FormularioId
+        {
+            get
+            {
+                return _FormularioId;
+            }
+            set
+            {
+                OnFormularioIdChanging(value);
+                ReportPropertyChanging("FormularioId");
+                _FormularioId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FormularioId");
+                OnFormularioIdChanged();
+            }
+        }
+        private global::System.Int32 _FormularioId;
+        partial void OnFormularioIdChanging(global::System.Int32 value);
+        partial void OnFormularioIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UsuarioId
+        {
+            get
+            {
+                return _UsuarioId;
+            }
+            set
+            {
+                OnUsuarioIdChanging(value);
+                ReportPropertyChanging("UsuarioId");
+                _UsuarioId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UsuarioId");
+                OnUsuarioIdChanged();
+            }
+        }
+        private global::System.Int32 _UsuarioId;
+        partial void OnUsuarioIdChanging(global::System.Int32 value);
+        partial void OnUsuarioIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId
+        {
+            get
+            {
+                return _ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId;
+            }
+            set
+            {
+                OnProfesoresxCarreraxEntidadCarrerasxEntidadCarreraIdChanging(value);
+                ReportPropertyChanging("ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId");
+                _ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId");
+                OnProfesoresxCarreraxEntidadCarrerasxEntidadCarreraIdChanged();
+            }
+        }
+        private global::System.Int32 _ProfesoresxCarreraxEntidadCarrerasxEntidadCarreraId;
+        partial void OnProfesoresxCarreraxEntidadCarrerasxEntidadCarreraIdChanging(global::System.Int32 value);
+        partial void OnProfesoresxCarreraxEntidadCarrerasxEntidadCarreraIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId
+        {
+            get
+            {
+                return _ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId;
+            }
+            set
+            {
+                OnProfesoresxCarreraxEntidadCarrerasxEntidadEntidadIdChanging(value);
+                ReportPropertyChanging("ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId");
+                _ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId");
+                OnProfesoresxCarreraxEntidadCarrerasxEntidadEntidadIdChanged();
+            }
+        }
+        private global::System.Int32 _ProfesoresxCarreraxEntidadCarrerasxEntidadEntidadId;
+        partial void OnProfesoresxCarreraxEntidadCarrerasxEntidadEntidadIdChanging(global::System.Int32 value);
+        partial void OnProfesoresxCarreraxEntidadCarrerasxEntidadEntidadIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProfesoresxCarreraxEntidadProfesorId
+        {
+            get
+            {
+                return _ProfesoresxCarreraxEntidadProfesorId;
+            }
+            set
+            {
+                OnProfesoresxCarreraxEntidadProfesorIdChanging(value);
+                ReportPropertyChanging("ProfesoresxCarreraxEntidadProfesorId");
+                _ProfesoresxCarreraxEntidadProfesorId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProfesoresxCarreraxEntidadProfesorId");
+                OnProfesoresxCarreraxEntidadProfesorIdChanged();
+            }
+        }
+        private global::System.Int32 _ProfesoresxCarreraxEntidadProfesorId;
+        partial void OnProfesoresxCarreraxEntidadProfesorIdChanging(global::System.Int32 value);
+        partial void OnProfesoresxCarreraxEntidadProfesorIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "EvaluacionRespuesta", "Respuesta")]
+        public EntityCollection<Respuesta> Respuestas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Respuesta>("Faqdeu.EvaluacionRespuesta", "Respuesta");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Respuesta>("Faqdeu.EvaluacionRespuesta", "Respuesta", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "FormularioEvaluacion", "Formulario")]
+        public Formulario Formulario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Formulario>("Faqdeu.FormularioEvaluacion", "Formulario").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Formulario>("Faqdeu.FormularioEvaluacion", "Formulario").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Formulario> FormularioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Formulario>("Faqdeu.FormularioEvaluacion", "Formulario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Formulario>("Faqdeu.FormularioEvaluacion", "Formulario", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "UsuarioEvaluacion", "Usuario")]
+        public Usuario Usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("Faqdeu.UsuarioEvaluacion", "Usuario").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("Faqdeu.UsuarioEvaluacion", "Usuario").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Usuario> UsuarioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("Faqdeu.UsuarioEvaluacion", "Usuario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Usuario>("Faqdeu.UsuarioEvaluacion", "Usuario", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "ProfesoresxCarreraxEntidadEvaluacion", "ProfesoresxCarreraxEntidad")]
+        public ProfesoresxCarreraxEntidad ProfesoresxCarreraxEntidad
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProfesoresxCarreraxEntidad>("Faqdeu.ProfesoresxCarreraxEntidadEvaluacion", "ProfesoresxCarreraxEntidad").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProfesoresxCarreraxEntidad>("Faqdeu.ProfesoresxCarreraxEntidadEvaluacion", "ProfesoresxCarreraxEntidad").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ProfesoresxCarreraxEntidad> ProfesoresxCarreraxEntidadReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProfesoresxCarreraxEntidad>("Faqdeu.ProfesoresxCarreraxEntidadEvaluacion", "ProfesoresxCarreraxEntidad");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProfesoresxCarreraxEntidad>("Faqdeu.ProfesoresxCarreraxEntidadEvaluacion", "ProfesoresxCarreraxEntidad", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Faqdeu", Name="Formulario")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -885,7 +1368,7 @@ namespace TestEntityFramework
         /// <param name="versión">Initial value of the Versión property.</param>
         /// <param name="fechaCreacion">Initial value of the FechaCreacion property.</param>
         /// <param name="fechaModificacion">Initial value of the FechaModificacion property.</param>
-        public static Formulario CreateFormulario(global::System.Int32 id, global::System.String nombre, global::System.String versión, global::System.String fechaCreacion, global::System.String fechaModificacion)
+        public static Formulario CreateFormulario(global::System.Int32 id, global::System.String nombre, global::System.String versión, global::System.DateTime fechaCreacion, global::System.DateTime fechaModificacion)
         {
             Formulario formulario = new Formulario();
             formulario.Id = id;
@@ -980,7 +1463,7 @@ namespace TestEntityFramework
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String FechaCreacion
+        public global::System.DateTime FechaCreacion
         {
             get
             {
@@ -990,13 +1473,13 @@ namespace TestEntityFramework
             {
                 OnFechaCreacionChanging(value);
                 ReportPropertyChanging("FechaCreacion");
-                _FechaCreacion = StructuralObject.SetValidValue(value, false);
+                _FechaCreacion = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("FechaCreacion");
                 OnFechaCreacionChanged();
             }
         }
-        private global::System.String _FechaCreacion;
-        partial void OnFechaCreacionChanging(global::System.String value);
+        private global::System.DateTime _FechaCreacion;
+        partial void OnFechaCreacionChanging(global::System.DateTime value);
         partial void OnFechaCreacionChanged();
     
         /// <summary>
@@ -1004,7 +1487,7 @@ namespace TestEntityFramework
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String FechaModificacion
+        public global::System.DateTime FechaModificacion
         {
             get
             {
@@ -1014,18 +1497,66 @@ namespace TestEntityFramework
             {
                 OnFechaModificacionChanging(value);
                 ReportPropertyChanging("FechaModificacion");
-                _FechaModificacion = StructuralObject.SetValidValue(value, false);
+                _FechaModificacion = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("FechaModificacion");
                 OnFechaModificacionChanged();
             }
         }
-        private global::System.String _FechaModificacion;
-        partial void OnFechaModificacionChanging(global::System.String value);
+        private global::System.DateTime _FechaModificacion;
+        partial void OnFechaModificacionChanging(global::System.DateTime value);
         partial void OnFechaModificacionChanged();
 
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "FormularioPregunta", "Pregunta")]
+        public EntityCollection<Pregunta> Preguntas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Pregunta>("Faqdeu.FormularioPregunta", "Pregunta");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Pregunta>("Faqdeu.FormularioPregunta", "Pregunta", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "FormularioEvaluacion", "Evaluacion")]
+        public EntityCollection<Evaluacion> Evaluaciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Evaluacion>("Faqdeu.FormularioEvaluacion", "Evaluacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Evaluacion>("Faqdeu.FormularioEvaluacion", "Evaluacion", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -1218,6 +1749,208 @@ namespace TestEntityFramework
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Faqdeu", Name="Pregunta")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Pregunta : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Pregunta object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="descripcion">Initial value of the Descripcion property.</param>
+        /// <param name="tipo">Initial value of the Tipo property.</param>
+        /// <param name="formularioId">Initial value of the FormularioId property.</param>
+        public static Pregunta CreatePregunta(global::System.Int32 id, global::System.String descripcion, global::System.String tipo, global::System.Int32 formularioId)
+        {
+            Pregunta pregunta = new Pregunta();
+            pregunta.Id = id;
+            pregunta.Descripcion = descripcion;
+            pregunta.Tipo = tipo;
+            pregunta.FormularioId = formularioId;
+            return pregunta;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Tipo
+        {
+            get
+            {
+                return _Tipo;
+            }
+            set
+            {
+                OnTipoChanging(value);
+                ReportPropertyChanging("Tipo");
+                _Tipo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Tipo");
+                OnTipoChanged();
+            }
+        }
+        private global::System.String _Tipo;
+        partial void OnTipoChanging(global::System.String value);
+        partial void OnTipoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FormularioId
+        {
+            get
+            {
+                return _FormularioId;
+            }
+            set
+            {
+                if (_FormularioId != value)
+                {
+                    OnFormularioIdChanging(value);
+                    ReportPropertyChanging("FormularioId");
+                    _FormularioId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("FormularioId");
+                    OnFormularioIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _FormularioId;
+        partial void OnFormularioIdChanging(global::System.Int32 value);
+        partial void OnFormularioIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "FormularioPregunta", "Formulario")]
+        public Formulario Formulario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Formulario>("Faqdeu.FormularioPregunta", "Formulario").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Formulario>("Faqdeu.FormularioPregunta", "Formulario").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Formulario> FormularioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Formulario>("Faqdeu.FormularioPregunta", "Formulario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Formulario>("Faqdeu.FormularioPregunta", "Formulario", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "PreguntaRespuesta", "Respuesta")]
+        public EntityCollection<Respuesta> Respuestas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Respuesta>("Faqdeu.PreguntaRespuesta", "Respuesta");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Respuesta>("Faqdeu.PreguntaRespuesta", "Respuesta", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Faqdeu", Name="Profesor")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1233,7 +1966,7 @@ namespace TestEntityFramework
         /// <param name="fechaCreacion">Initial value of the FechaCreacion property.</param>
         /// <param name="fechaModificacion">Initial value of the FechaModificacion property.</param>
         /// <param name="estado">Initial value of the Estado property.</param>
-        public static Profesor CreateProfesor(global::System.Int32 id, global::System.String nombre, global::System.String fechaCreacion, global::System.String fechaModificacion, global::System.String estado)
+        public static Profesor CreateProfesor(global::System.Int32 id, global::System.String nombre, global::System.DateTime fechaCreacion, global::System.DateTime fechaModificacion, global::System.String estado)
         {
             Profesor profesor = new Profesor();
             profesor.Id = id;
@@ -1304,7 +2037,7 @@ namespace TestEntityFramework
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String FechaCreacion
+        public global::System.DateTime FechaCreacion
         {
             get
             {
@@ -1314,13 +2047,13 @@ namespace TestEntityFramework
             {
                 OnFechaCreacionChanging(value);
                 ReportPropertyChanging("FechaCreacion");
-                _FechaCreacion = StructuralObject.SetValidValue(value, false);
+                _FechaCreacion = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("FechaCreacion");
                 OnFechaCreacionChanged();
             }
         }
-        private global::System.String _FechaCreacion;
-        partial void OnFechaCreacionChanging(global::System.String value);
+        private global::System.DateTime _FechaCreacion;
+        partial void OnFechaCreacionChanging(global::System.DateTime value);
         partial void OnFechaCreacionChanged();
     
         /// <summary>
@@ -1328,7 +2061,7 @@ namespace TestEntityFramework
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String FechaModificacion
+        public global::System.DateTime FechaModificacion
         {
             get
             {
@@ -1338,13 +2071,13 @@ namespace TestEntityFramework
             {
                 OnFechaModificacionChanging(value);
                 ReportPropertyChanging("FechaModificacion");
-                _FechaModificacion = StructuralObject.SetValidValue(value, false);
+                _FechaModificacion = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("FechaModificacion");
                 OnFechaModificacionChanged();
             }
         }
-        private global::System.String _FechaModificacion;
-        partial void OnFechaModificacionChanging(global::System.String value);
+        private global::System.DateTime _FechaModificacion;
+        partial void OnFechaModificacionChanging(global::System.DateTime value);
         partial void OnFechaModificacionChanged();
     
         /// <summary>
@@ -1589,6 +2322,269 @@ namespace TestEntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Profesor>("Faqdeu.ProfesorProfesoresxCarreraxEntidad", "Profesor", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "ProfesoresxCarreraxEntidadEvaluacion", "Evaluacion")]
+        public EntityCollection<Evaluacion> Evaluacion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Evaluacion>("Faqdeu.ProfesoresxCarreraxEntidadEvaluacion", "Evaluacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Evaluacion>("Faqdeu.ProfesoresxCarreraxEntidadEvaluacion", "Evaluacion", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Faqdeu", Name="Respuesta")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Respuesta : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Respuesta object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="valor">Initial value of the Valor property.</param>
+        /// <param name="evaluacionId">Initial value of the EvaluacionId property.</param>
+        /// <param name="preguntaId">Initial value of the PreguntaId property.</param>
+        /// <param name="preguntaFormularioId">Initial value of the PreguntaFormularioId property.</param>
+        public static Respuesta CreateRespuesta(global::System.Int32 id, global::System.String valor, global::System.Int32 evaluacionId, global::System.Int32 preguntaId, global::System.Int32 preguntaFormularioId)
+        {
+            Respuesta respuesta = new Respuesta();
+            respuesta.Id = id;
+            respuesta.Valor = valor;
+            respuesta.EvaluacionId = evaluacionId;
+            respuesta.PreguntaId = preguntaId;
+            respuesta.PreguntaFormularioId = preguntaFormularioId;
+            return respuesta;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Valor
+        {
+            get
+            {
+                return _Valor;
+            }
+            set
+            {
+                OnValorChanging(value);
+                ReportPropertyChanging("Valor");
+                _Valor = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Valor");
+                OnValorChanged();
+            }
+        }
+        private global::System.String _Valor;
+        partial void OnValorChanging(global::System.String value);
+        partial void OnValorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 EvaluacionId
+        {
+            get
+            {
+                return _EvaluacionId;
+            }
+            set
+            {
+                OnEvaluacionIdChanging(value);
+                ReportPropertyChanging("EvaluacionId");
+                _EvaluacionId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EvaluacionId");
+                OnEvaluacionIdChanged();
+            }
+        }
+        private global::System.Int32 _EvaluacionId;
+        partial void OnEvaluacionIdChanging(global::System.Int32 value);
+        partial void OnEvaluacionIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PreguntaId
+        {
+            get
+            {
+                return _PreguntaId;
+            }
+            set
+            {
+                OnPreguntaIdChanging(value);
+                ReportPropertyChanging("PreguntaId");
+                _PreguntaId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PreguntaId");
+                OnPreguntaIdChanged();
+            }
+        }
+        private global::System.Int32 _PreguntaId;
+        partial void OnPreguntaIdChanging(global::System.Int32 value);
+        partial void OnPreguntaIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PreguntaFormularioId
+        {
+            get
+            {
+                return _PreguntaFormularioId;
+            }
+            set
+            {
+                OnPreguntaFormularioIdChanging(value);
+                ReportPropertyChanging("PreguntaFormularioId");
+                _PreguntaFormularioId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PreguntaFormularioId");
+                OnPreguntaFormularioIdChanged();
+            }
+        }
+        private global::System.Int32 _PreguntaFormularioId;
+        partial void OnPreguntaFormularioIdChanging(global::System.Int32 value);
+        partial void OnPreguntaFormularioIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "EvaluacionRespuesta", "Evaluacion")]
+        public Evaluacion Evaluacion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Evaluacion>("Faqdeu.EvaluacionRespuesta", "Evaluacion").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Evaluacion>("Faqdeu.EvaluacionRespuesta", "Evaluacion").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Evaluacion> EvaluacionReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Evaluacion>("Faqdeu.EvaluacionRespuesta", "Evaluacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Evaluacion>("Faqdeu.EvaluacionRespuesta", "Evaluacion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "PreguntaRespuesta", "Pregunta")]
+        public Pregunta Pregunta
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Pregunta>("Faqdeu.PreguntaRespuesta", "Pregunta").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Pregunta>("Faqdeu.PreguntaRespuesta", "Pregunta").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Pregunta> PreguntaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Pregunta>("Faqdeu.PreguntaRespuesta", "Pregunta");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Pregunta>("Faqdeu.PreguntaRespuesta", "Pregunta", value);
                 }
             }
         }
@@ -1930,6 +2926,28 @@ namespace TestEntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Perfil>("Faqdeu.PerfilUsuario", "Perfil", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Faqdeu", "UsuarioEvaluacion", "Evaluacion")]
+        public EntityCollection<Evaluacion> Evaluaciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Evaluacion>("Faqdeu.UsuarioEvaluacion", "Evaluacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Evaluacion>("Faqdeu.UsuarioEvaluacion", "Evaluacion", value);
                 }
             }
         }
