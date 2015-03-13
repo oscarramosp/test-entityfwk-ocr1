@@ -373,15 +373,13 @@ namespace TestEntityFramework
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="nombre">Initial value of the Nombre property.</param>
         /// <param name="fechaCreacion">Initial value of the FechaCreacion property.</param>
-        /// <param name="fechaModificacion">Initial value of the FechaModificacion property.</param>
         /// <param name="estado">Initial value of the Estado property.</param>
-        public static Carrera CreateCarrera(global::System.Int32 id, global::System.String nombre, global::System.DateTime fechaCreacion, global::System.DateTime fechaModificacion, global::System.String estado)
+        public static Carrera CreateCarrera(global::System.Int32 id, global::System.String nombre, global::System.DateTime fechaCreacion, global::System.String estado)
         {
             Carrera carrera = new Carrera();
             carrera.Id = id;
             carrera.Nombre = nombre;
             carrera.FechaCreacion = fechaCreacion;
-            carrera.FechaModificacion = fechaModificacion;
             carrera.Estado = estado;
             return carrera;
         }
@@ -468,9 +466,9 @@ namespace TestEntityFramework
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime FechaModificacion
+        public Nullable<global::System.DateTime> FechaModificacion
         {
             get
             {
@@ -485,8 +483,8 @@ namespace TestEntityFramework
                 OnFechaModificacionChanged();
             }
         }
-        private global::System.DateTime _FechaModificacion;
-        partial void OnFechaModificacionChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _FechaModificacion;
+        partial void OnFechaModificacionChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaModificacionChanged();
     
         /// <summary>
@@ -749,16 +747,14 @@ namespace TestEntityFramework
         /// <param name="nombre">Initial value of the Nombre property.</param>
         /// <param name="tipo">Initial value of the Tipo property.</param>
         /// <param name="fechaCreacion">Initial value of the FechaCreacion property.</param>
-        /// <param name="fechaModificacion">Initial value of the FechaModificacion property.</param>
         /// <param name="estado">Initial value of the Estado property.</param>
-        public static Entidad CreateEntidad(global::System.Int32 id, global::System.String nombre, global::System.String tipo, global::System.DateTime fechaCreacion, global::System.DateTime fechaModificacion, global::System.String estado)
+        public static Entidad CreateEntidad(global::System.Int32 id, global::System.String nombre, global::System.String tipo, global::System.DateTime fechaCreacion, global::System.String estado)
         {
             Entidad entidad = new Entidad();
             entidad.Id = id;
             entidad.Nombre = nombre;
             entidad.Tipo = tipo;
             entidad.FechaCreacion = fechaCreacion;
-            entidad.FechaModificacion = fechaModificacion;
             entidad.Estado = estado;
             return entidad;
         }
@@ -869,9 +865,9 @@ namespace TestEntityFramework
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime FechaModificacion
+        public Nullable<global::System.DateTime> FechaModificacion
         {
             get
             {
@@ -886,8 +882,8 @@ namespace TestEntityFramework
                 OnFechaModificacionChanged();
             }
         }
-        private global::System.DateTime _FechaModificacion;
-        partial void OnFechaModificacionChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _FechaModificacion;
+        partial void OnFechaModificacionChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaModificacionChanged();
     
         /// <summary>
@@ -1367,15 +1363,13 @@ namespace TestEntityFramework
         /// <param name="nombre">Initial value of the Nombre property.</param>
         /// <param name="versión">Initial value of the Versión property.</param>
         /// <param name="fechaCreacion">Initial value of the FechaCreacion property.</param>
-        /// <param name="fechaModificacion">Initial value of the FechaModificacion property.</param>
-        public static Formulario CreateFormulario(global::System.Int32 id, global::System.String nombre, global::System.String versión, global::System.DateTime fechaCreacion, global::System.DateTime fechaModificacion)
+        public static Formulario CreateFormulario(global::System.Int32 id, global::System.String nombre, global::System.String versión, global::System.DateTime fechaCreacion)
         {
             Formulario formulario = new Formulario();
             formulario.Id = id;
             formulario.Nombre = nombre;
             formulario.Versión = versión;
             formulario.FechaCreacion = fechaCreacion;
-            formulario.FechaModificacion = fechaModificacion;
             return formulario;
         }
 
@@ -1485,9 +1479,9 @@ namespace TestEntityFramework
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime FechaModificacion
+        public Nullable<global::System.DateTime> FechaModificacion
         {
             get
             {
@@ -1502,8 +1496,8 @@ namespace TestEntityFramework
                 OnFechaModificacionChanged();
             }
         }
-        private global::System.DateTime _FechaModificacion;
-        partial void OnFechaModificacionChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _FechaModificacion;
+        partial void OnFechaModificacionChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaModificacionChanged();
 
         #endregion
@@ -1575,15 +1569,13 @@ namespace TestEntityFramework
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="nombre">Initial value of the Nombre property.</param>
         /// <param name="fechaCreacion">Initial value of the FechaCreacion property.</param>
-        /// <param name="fechaModificacion">Initial value of the FechaModificacion property.</param>
         /// <param name="estado">Initial value of the Estado property.</param>
-        public static Perfil CreatePerfil(global::System.Int32 id, global::System.String nombre, global::System.DateTime fechaCreacion, global::System.DateTime fechaModificacion, global::System.String estado)
+        public static Perfil CreatePerfil(global::System.Int32 id, global::System.String nombre, global::System.DateTime fechaCreacion, global::System.String estado)
         {
             Perfil perfil = new Perfil();
             perfil.Id = id;
             perfil.Nombre = nombre;
             perfil.FechaCreacion = fechaCreacion;
-            perfil.FechaModificacion = fechaModificacion;
             perfil.Estado = estado;
             return perfil;
         }
@@ -1670,9 +1662,9 @@ namespace TestEntityFramework
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime FechaModificacion
+        public Nullable<global::System.DateTime> FechaModificacion
         {
             get
             {
@@ -1687,8 +1679,8 @@ namespace TestEntityFramework
                 OnFechaModificacionChanged();
             }
         }
-        private global::System.DateTime _FechaModificacion;
-        partial void OnFechaModificacionChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _FechaModificacion;
+        partial void OnFechaModificacionChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaModificacionChanged();
     
         /// <summary>
@@ -1964,15 +1956,13 @@ namespace TestEntityFramework
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="nombre">Initial value of the Nombre property.</param>
         /// <param name="fechaCreacion">Initial value of the FechaCreacion property.</param>
-        /// <param name="fechaModificacion">Initial value of the FechaModificacion property.</param>
         /// <param name="estado">Initial value of the Estado property.</param>
-        public static Profesor CreateProfesor(global::System.Int32 id, global::System.String nombre, global::System.DateTime fechaCreacion, global::System.DateTime fechaModificacion, global::System.String estado)
+        public static Profesor CreateProfesor(global::System.Int32 id, global::System.String nombre, global::System.DateTime fechaCreacion, global::System.String estado)
         {
             Profesor profesor = new Profesor();
             profesor.Id = id;
             profesor.Nombre = nombre;
             profesor.FechaCreacion = fechaCreacion;
-            profesor.FechaModificacion = fechaModificacion;
             profesor.Estado = estado;
             return profesor;
         }
@@ -2059,9 +2049,9 @@ namespace TestEntityFramework
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime FechaModificacion
+        public Nullable<global::System.DateTime> FechaModificacion
         {
             get
             {
@@ -2076,8 +2066,8 @@ namespace TestEntityFramework
                 OnFechaModificacionChanged();
             }
         }
-        private global::System.DateTime _FechaModificacion;
-        partial void OnFechaModificacionChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _FechaModificacion;
+        partial void OnFechaModificacionChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaModificacionChanged();
     
         /// <summary>

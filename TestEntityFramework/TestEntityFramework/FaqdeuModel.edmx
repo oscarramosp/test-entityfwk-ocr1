@@ -414,7 +414,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="128" />
           <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
-          <Property Type="DateTime" Name="FechaModificacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" />
           <NavigationProperty Name="Usuarios" Relationship="Faqdeu.PerfilUsuario" FromRole="Perfil" ToRole="Usuario" />
           <Property Type="String" Name="Estado" Nullable="false" />
         </EntityType>
@@ -444,7 +444,7 @@
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="256" />
           <Property Type="String" Name="Tipo" Nullable="false" MaxLength="1" />
           <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
-          <Property Type="DateTime" Name="FechaModificacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" />
           <Property Type="String" Name="Estado" Nullable="false" />
           <NavigationProperty Name="Carreras" Relationship="Faqdeu.EntidadCarrerasxEntidad" FromRole="Entidad" ToRole="CarrerasxEntidad" />
         </EntityType>
@@ -455,7 +455,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Nombre" Nullable="false" />
           <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
-          <Property Type="DateTime" Name="FechaModificacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" />
           <Property Type="String" Name="Estado" Nullable="false" />
           <NavigationProperty Name="Carreras" Relationship="Faqdeu.ProfesorProfesoresxCarreraxEntidad" FromRole="Profesor" ToRole="ProfesoresxCarreraxEntidad" />
         </EntityType>
@@ -466,7 +466,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="256" />
           <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
-          <Property Type="DateTime" Name="FechaModificacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" />
           <Property Type="String" Name="Estado" Nullable="false" />
           <NavigationProperty Name="Entidades" Relationship="Faqdeu.CarreraCarrerasxEntidad" FromRole="Carrera" ToRole="CarrerasxEntidad" />
         </EntityType>
@@ -556,7 +556,7 @@
           <Property Type="String" Name="Nombre" Nullable="false" />
           <Property Type="String" Name="Versión" Nullable="false" />
           <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
-          <Property Type="DateTime" Name="FechaModificacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" />
           <NavigationProperty Name="Preguntas" Relationship="Faqdeu.FormularioPregunta" FromRole="Formulario" ToRole="Pregunta" />
           <NavigationProperty Name="Evaluaciones" Relationship="Faqdeu.FormularioEvaluacion" FromRole="Formulario" ToRole="Evaluacion" />
         </EntityType>
