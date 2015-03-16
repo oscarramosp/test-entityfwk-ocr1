@@ -74,7 +74,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="true" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuarios">
@@ -101,7 +101,7 @@
     <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="1" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="true" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Profesores">
@@ -111,7 +111,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="true" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Carreras">
@@ -121,7 +121,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="true" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="CarrerasxEntidades">
@@ -150,7 +150,7 @@
     <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Versión" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="Preguntas">
     <Key>
