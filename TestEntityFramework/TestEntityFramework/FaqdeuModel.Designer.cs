@@ -9,27 +9,31 @@
 
 using System;
 using System.ComponentModel;
-using System.Data.EntityClient;
-using System.Data.Objects;
-using System.Data.Objects.DataClasses;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Core.Objects.DataClasses;
+using System.Data.Entity.Core.EntityClient;
+//using System.Data.EntityClient;
+//using System.Data.Objects;
+//using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
+
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Faqdeu", "PerfilUsuario", "Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Perfil), "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Usuario))]
-[assembly: EdmRelationshipAttribute("Faqdeu", "CarreraCarrerasxEntidad", "Carrera", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Carrera), "CarrerasxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.CarrerasxEntidad), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "EntidadCarrerasxEntidad", "Entidad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Entidad), "CarrerasxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.CarrerasxEntidad), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "CarrerasxEntidadProfesoresxCarreraxEntidad", "CarrerasxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.CarrerasxEntidad), "ProfesoresxCarreraxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "ProfesorProfesoresxCarreraxEntidad", "Profesor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Profesor), "ProfesoresxCarreraxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "FormularioPregunta", "Formulario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Formulario), "Pregunta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Pregunta), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "EvaluacionRespuesta", "Evaluacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Evaluacion), "Respuesta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Respuesta), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "FormularioEvaluacion", "Formulario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Formulario), "Evaluacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "PreguntaRespuesta", "Pregunta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Pregunta), "Respuesta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Respuesta), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "UsuarioEvaluacion", "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Usuario), "Evaluacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
-[assembly: EdmRelationshipAttribute("Faqdeu", "ProfesoresxCarreraxEntidadEvaluacion", "ProfesoresxCarreraxEntidad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), "Evaluacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "PerfilUsuario", "Perfil", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Perfil), "Usuario", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Usuario))]
+[assembly: EdmRelationshipAttribute("Faqdeu", "CarreraCarrerasxEntidad", "Carrera", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Carrera), "CarrerasxEntidad", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.CarrerasxEntidad), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "EntidadCarrerasxEntidad", "Entidad", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Entidad), "CarrerasxEntidad", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.CarrerasxEntidad), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "CarrerasxEntidadProfesoresxCarreraxEntidad", "CarrerasxEntidad", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.CarrerasxEntidad), "ProfesoresxCarreraxEntidad", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "ProfesorProfesoresxCarreraxEntidad", "Profesor", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Profesor), "ProfesoresxCarreraxEntidad", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "FormularioPregunta", "Formulario", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Formulario), "Pregunta", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Pregunta), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "EvaluacionRespuesta", "Evaluacion", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Evaluacion), "Respuesta", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Respuesta), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "FormularioEvaluacion", "Formulario", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Formulario), "Evaluacion", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "PreguntaRespuesta", "Pregunta", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Pregunta), "Respuesta", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Respuesta), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "UsuarioEvaluacion", "Usuario", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.Usuario), "Evaluacion", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
+[assembly: EdmRelationshipAttribute("Faqdeu", "ProfesoresxCarreraxEntidadEvaluacion", "ProfesoresxCarreraxEntidad", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(TestEntityFramework.ProfesoresxCarreraxEntidad), "Evaluacion", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TestEntityFramework.Evaluacion), true)]
 
 #endregion
 

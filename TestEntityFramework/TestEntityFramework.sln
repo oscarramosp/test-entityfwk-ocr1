@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEntityFramework", "TestEntityFramework\TestEntityFramework.csproj", "{51AD8F86-3D40-4608-B734-760092CA7D85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityfwkTest", "EntityfwkTest\EntityfwkTest.csproj", "{581E2FE2-F53D-4BBF-A959-801AF6638318}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc4Test", "Mvc4Test\Mvc4Test.csproj", "{6BE63FF2-3149-48A1-9E9E-C7E67B8D3EAC}"
 EndProject
 Global
@@ -17,10 +15,6 @@ Global
 		{51AD8F86-3D40-4608-B734-760092CA7D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51AD8F86-3D40-4608-B734-760092CA7D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51AD8F86-3D40-4608-B734-760092CA7D85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{581E2FE2-F53D-4BBF-A959-801AF6638318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{581E2FE2-F53D-4BBF-A959-801AF6638318}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{581E2FE2-F53D-4BBF-A959-801AF6638318}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{581E2FE2-F53D-4BBF-A959-801AF6638318}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6BE63FF2-3149-48A1-9E9E-C7E67B8D3EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6BE63FF2-3149-48A1-9E9E-C7E67B8D3EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BE63FF2-3149-48A1-9E9E-C7E67B8D3EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
