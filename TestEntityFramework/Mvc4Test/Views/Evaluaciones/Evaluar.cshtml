@@ -1,0 +1,76 @@
+﻿@model TestEntityFramework.Evaluacion
+
+@{
+    Layout = null;
+    ViewBag.Title = "Evaluación";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Evaluación</title>
+</head>
+<body>
+    <h2>Evaluación</h2>
+    <div>
+        @using (Html.BeginForm()){
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Evaluación</legend>
+
+                <div>
+                    @Html.LabelFor(model => model.ProfesoresxCarreraxEntidad.CarreraxEntidad.Entidad.Nombre)
+                </div>
+                <div>
+                    @Model.ProfesoresxCarreraxEntidad.CarreraxEntidad.Entidad.Nombre
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.ProfesoresxCarreraxEntidad.CarreraxEntidad.Carrera.Nombre)
+                </div>
+                <div>
+                    @Model.ProfesoresxCarreraxEntidad.CarreraxEntidad.Carrera.Nombre
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.ProfesoresxCarreraxEntidad.Profesores.Nombre)
+                </div>
+                <div>
+                    @Model.ProfesoresxCarreraxEntidad.Profesores.Nombre
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Tags)
+                </div>
+                <div>
+                    @Html.EditorFor(model => model.Tags)
+                    @Html.ValidationMessageFor(model => model.Tags)
+                </div>
+
+                <fieldset>
+                    <legend>Preguntas</legend>
+                    <ul>
+                        <li>
+                            @foreach (TestEntityFramework.Respuesta respuesta in @Model.Respuestas)
+                            {
+                                <div>
+                                    @respuesta.Pregunta.Descripcion
+                                </div>
+                                <div>
+                                    @Html.EditorFor(model => respuesta.Valor)
+                                    @Html.ValidationMessageFor(model => respuesta.Valor)
+                                </div>
+                            }
+                        </li>
+                    </ul>
+                </fieldset>
+
+
+            </fieldset>
+        }
+    </div>
+</body>
+</html>

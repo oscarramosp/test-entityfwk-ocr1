@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TestEntityFramework.Entidad>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Lista de entidades";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Entidades</title>
+</head>
+<body>
+    <h2>Lista de entidades</h2>
+    <ul>
+        @foreach (TestEntityFramework.Entidad entidad in @Model)
+        {
+            <li>
+                @Html.ActionLink(entidad.Nombre, "Carreras", "CarrerasxEntidad", new{ entidadId = entidad.Id}, null)
+            </li>   
+        }
+    </ul>
+</body>
+</html>
+    
