@@ -514,7 +514,12 @@ insert into ProfesoresxCarreraesxEntidades values (5,5,5);
 
 insert into ProfesoresxCarreraesxEntidades values (3,1,4);
 
+insert into Formularios values ('Formulario 1','1.0',getdate(),null);
 
+insert into Preguntas values ('Llega a tiempo a clases?','',1);
+insert into Preguntas values ('Entrega las notas en el tiempo acordado?','',1);
+insert into Preguntas values ('Domina sus temas?','',1);
+insert into Preguntas values ('Explica bien sus temas?','',1);
 */
 -- --------------------------------------------------
 -- Script has ended
