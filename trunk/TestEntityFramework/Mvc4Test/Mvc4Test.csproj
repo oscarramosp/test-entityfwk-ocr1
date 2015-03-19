@@ -111,7 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CarrerasxEntidadController.cs" />
+    <Compile Include="Controllers\CarrerasxEntidadesxProfesorController.cs" />
     <Compile Include="Controllers\EntidadController.cs" />
+    <Compile Include="Controllers\EvaluacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -149,10 +151,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Entidad\List.cshtml" />
+    <Content Include="Views\Entidad\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\CarrerasxEntidad\Carreras.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CarrerasxEntidadesxProfesor\Profesores.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Evaluaciones\Evaluar.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

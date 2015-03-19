@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TestEntityFramework.ProfesoresxCarreraxEntidad>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Lista de Profesores";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Profesores</title>
+</head>
+<body>
+    <h2>Lista de profesores</h2>
+    <div>
+        @foreach (TestEntityFramework.ProfesoresxCarreraxEntidad profesor in @Model)
+        {
+            <li>
+                @Html.ActionLink(@profesor.Profesores.Nombre, "Evaluar", "Evaluaciones", new { carreraId = @profesor.CarrerasxEntidadCarreraId, entidadId = @profesor.CarrerasxEntidadEntidadId, profesorId = @profesor.ProfesorId }, null)
+            </li>   
+        }
+    </div>
+</body>
+</html>
