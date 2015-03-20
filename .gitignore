@@ -1,0 +1,5 @@
+# git ignore file
+TestEntityFramework\Mvc4Test\bin*/
+TestEntityFramework\TestEntityFramework\bin\Debug*/
+TestEntityFramework\Mvc4Test\obj\Debug*/
+TestEntityFramework\TestEntityFramework\obj\Debug*/
